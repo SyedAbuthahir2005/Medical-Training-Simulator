@@ -1,82 +1,103 @@
 # 🩺 AI-Based Medical Training Simulator
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
-![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black?logo=flask)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript&logoColor=black)
-![AI](https://img.shields.io/badge/Generative%20AI-Gemini%20API-orange)
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
+![Flask](https://img.shields.io/badge/Flask-Backend-black?logo=flask)
+![HTML5](https://img.shields.io/badge/HTML5-Frontend-orange?logo=html5)
+![CSS3](https://img.shields.io/badge/CSS3-Styling-blue?logo=css3)
+![JavaScript](https://img.shields.io/badge/JavaScript-Interactive-yellow?logo=javascript)
+![Generative AI](https://img.shields.io/badge/AI-Gemini%20API-success)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-> An AI-powered medical training platform that generates realistic virtual patient scenarios, enabling medical students to practice clinical reasoning, diagnosis, and treatment planning in a safe learning environment.
+</p>
 
 ---
 
-## 📖 Overview
+# 📖 Overview
 
-The **AI-Based Medical Training Simulator** is a web application developed to help medical students improve their diagnostic skills through interactive AI-generated patient cases.
+The **AI-Based Medical Training Simulator** is an interactive web application that provides realistic virtual patient consultations for medical students.
 
-The simulator creates realistic patient conversations, evaluates the student's diagnosis, suggests investigations, and provides educational feedback using Generative AI.
+The simulator uses **Generative AI** to create diverse patient scenarios, allowing students to:
 
----
+- Interview virtual patients
+- Request clinical investigations
+- Analyze medical findings
+- Submit diagnoses
+- Receive AI-generated clinical feedback
 
-## ✨ Features
-
-- 🧑‍⚕️ AI-generated virtual patients
-- 💬 Interactive doctor-patient conversation
-- 🩺 Symptom-based clinical scenarios
-- 🧪 Investigation recommendations
-- 📋 Diagnosis evaluation
-- 💊 Treatment suggestions
-- 📊 Instant feedback and learning support
-- 🌐 User-friendly web interface
+This project helps students improve **clinical reasoning**, **history taking**, **diagnostic skills**, and **decision making** in a safe learning environment.
 
 ---
 
-## 🏗️ System Architecture
+# ✨ Features
 
-```text
+- 🩺 AI-generated patient cases
+- 💬 Interactive doctor–patient conversation
+- 🧑 Different medical departments
+- 📈 Multiple difficulty levels
+- 🧪 Clinical investigation tools
+  - Physical Examination
+  - Blood Test
+  - X-Ray
+  - ECG
+- 📝 Diagnosis submission
+- 📊 Automatic evaluation
+- 🎯 Clinical reasoning feedback
+- 📱 Responsive modern interface
+
+---
+
+# 🏗️ System Architecture
+
+```
 Medical Student
-        │
-        ▼
-Flask Web Application
-        │
-        ▼
-Generative AI API (Gemini/Mistral)
-        │
-        ▼
-Patient Scenario Generator
-        │
-        ▼
-Diagnosis Evaluation
-        │
-        ▼
-Feedback & Treatment Recommendation
+       │
+       ▼
+ Flask Web Application
+       │
+       ▼
+ Generative AI (Gemini API)
+       │
+       ▼
+ Patient Scenario Generator
+       │
+       ▼
+ Interactive Consultation
+       │
+       ▼
+ Investigation Module
+       │
+       ▼
+ Diagnosis Evaluation
+       │
+       ▼
+ AI Feedback & Score
 ```
 
 ---
 
-## 🛠️ Technology Stack
+# 💻 Technology Stack
 
 | Category | Technologies |
-|----------|--------------|
+|-----------|--------------|
 | Backend | Python, Flask |
 | Frontend | HTML, CSS, JavaScript |
-| AI | Gemini API / Mistral API |
-| IDE | Visual Studio Code |
+| AI | Google Gemini API |
 | Version Control | Git & GitHub |
+| IDE | Visual Studio Code |
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
-```text
+```
 Medical-Training-Simulator/
-│
-├── app.py
-├── requirements.txt
-├── README.md
-├── .gitignore
+
+│── app.py
+│── requirements.txt
+│── README.md
+│── .gitignore
 │
 ├── templates/
 │      └── index.html
@@ -87,58 +108,48 @@ Medical-Training-Simulator/
 │      └── images/
 │
 ├── screenshots/
-│      ├── home.png
-│      ├── patient_case.png
+│      ├── dashboard.png
+│      ├── patient_chat1.png
+│      ├── patient_chat2.png
 │      ├── diagnosis.png
-│      └── feedback.png
+│      └── case_selection.png
 │
 ├── report/
-│      └── AI_Medical_Training_Simulator_Report.pdf
+│      └── Project_Report.pdf
 │
-├── sample_io/
-│      ├── sample_input.txt
-│      └── sample_output.txt
+├── prompts/
 │
-├── dataset/
-│
-└── prompts/
-       └── prompt_templates.md
+└── sample_io/
 ```
 
 ---
 
-## 🚀 Installation
+# 🚀 Installation
 
 Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Medical-Training-Simulator.git
+git clone https://github.com/SyedAbuthahir2005/Medical-Training-Simulator.git
 ```
 
-Navigate to the project folder
+Move into the project
 
 ```bash
 cd Medical-Training-Simulator
 ```
 
-Create a virtual environment
+Create virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate the environment
+Activate
 
-### Windows
+Windows
 
 ```bash
 venv\Scripts\activate
-```
-
-### Linux / macOS
-
-```bash
-source venv/bin/activate
 ```
 
 Install dependencies
@@ -147,13 +158,13 @@ Install dependencies
 pip install -r requirements.txt
 ```
 
-Run the application
+Run
 
 ```bash
 python app.py
 ```
 
-Open your browser
+Open
 
 ```
 http://127.0.0.1:5000
@@ -161,97 +172,150 @@ http://127.0.0.1:5000
 
 ---
 
-## 📸 Application Screenshots
+# 📸 Application Screenshots
 
-### 🏠 Home Page
+## 🏠 Dashboard
 
-![Home](screenshots/home.png)
+The simulator dashboard displaying patient information, consultation panel, investigation tools, and diagnosis evaluation.
 
----
-
-### 👤 Patient Scenario
-
-![Patient](screenshots/patient_case.png)
+![](screenshots/dashboard.png)
 
 ---
 
-### 🩺 Diagnosis Interface
+## 💬 Patient Consultation
 
-![Diagnosis](screenshots/diagnosis.png)
+Students can communicate naturally with the AI-generated patient to collect medical history.
 
----
-
-### ✅ AI Feedback
-
-![Feedback](screenshots/feedback.png)
+![](screenshots/patient_chat1.png)
 
 ---
 
-## 📝 Sample Input
+## 🩺 Physical Examination Results
 
-```text
-Patient Name: Rajesh
+Students can request physical examination findings before making a diagnosis.
 
-Age: 45
+![](screenshots/patient_chat2.png)
 
-Symptoms:
-• Fever
-• Chest Pain
-• Persistent Cough
-• Shortness of Breath
+---
 
-Student Diagnosis:
-Community Acquired Pneumonia
+## 📝 Diagnosis Evaluation
+
+After submitting a diagnosis, the AI evaluates the student's clinical reasoning and provides a score with detailed feedback.
+
+![](screenshots/diagnosis.png)
+
+---
+
+## 🏥 Case Selection
+
+Each case includes:
+
+- Patient Age
+- Gender
+- Department
+- Difficulty Level
+- Chief Complaint
+- Clinical Investigation Tools
+
+![](screenshots/case_selection.png)
+
+---
+
+# 🧪 Clinical Workflow
+
+1. Generate a new patient case.
+2. Review patient demographics.
+3. Interview the patient.
+4. Request investigations.
+5. Analyze examination results.
+6. Submit diagnosis.
+7. Receive AI-generated evaluation.
+8. Learn from clinical feedback.
+
+---
+
+# 📝 Sample Input
+
+```
+Patient
+
+Female
+
+Age: 28
+
+Chief Complaint
+
+Lower abdominal pain
+
+Duration
+
+3 days
+
+Requested Tests
+
+Physical Examination
+
+Blood Test
+
+X-Ray
 ```
 
 ---
 
-## 📤 Sample Output
+# 📤 Sample Output
 
-```text
-Diagnosis Score : 92%
+```
+Diagnosis Evaluation
 
-Correct Diagnosis:
-Community Acquired Pneumonia
+Correctness:
+Incorrect
 
-Recommended Tests:
-• CBC
-• Chest X-ray
-• CRP
+Score:
+30 / 100
 
-Treatment:
-• Azithromycin
-• Hydration
-• Rest
+Clinical Feedback
 
-AI Feedback:
-Excellent clinical reasoning.
+• Missing important diagnostic clues
+
+• Consider pain location
+
+• Associated symptoms
+
+• Physical examination findings
+
+Suggested Improvement
+
+Use a systematic approach while evaluating abdominal pain.
 ```
 
 ---
 
-## 🎯 Learning Objectives
+# 🎯 Learning Outcomes
 
-- Improve diagnostic reasoning
-- Practice patient interviewing
-- Learn differential diagnosis
-- Recommend investigations
-- Develop treatment planning skills
+This simulator helps students practice
+
+- Clinical history taking
+- Diagnostic reasoning
+- Differential diagnosis
+- Investigation selection
+- Medical decision making
+- AI-assisted medical education
 
 ---
 
-## 🚀 Future Enhancements
+# 🔮 Future Enhancements
 
-- 🎤 Voice-based patient interaction
+- 🎤 Voice-based consultation
 - 🩻 Medical image interpretation
-- 📈 Performance analytics dashboard
+- 📈 Student performance analytics
 - 🌍 Multi-language support
 - ☁️ Cloud deployment
-- 👨‍🏫 Faculty assessment module
+- 👨‍⚕️ Faculty dashboard
+- 📱 Mobile application
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Syed Abuthahir**
 
@@ -261,12 +325,16 @@ Dr. N.G.P Institute of Technology
 
 ---
 
-## 📄 License
+# 📜 License
 
-This project is intended for educational and academic purposes.
+This project is developed for **academic and educational purposes**.
 
-MIT License
+MIT License.
 
 ---
 
-⭐ If you found this project useful, consider giving it a **Star** on GitHub!
+<p align="center">
+
+⭐ If you found this project useful, please consider giving it a **Star** on GitHub.
+
+</p>
