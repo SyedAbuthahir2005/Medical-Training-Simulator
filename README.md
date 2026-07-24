@@ -7,7 +7,7 @@
 ![HTML5](https://img.shields.io/badge/HTML5-Frontend-orange?logo=html5)
 ![CSS3](https://img.shields.io/badge/CSS3-Styling-blue?logo=css3)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Interactive-yellow?logo=javascript)
-![Generative AI](https://img.shields.io/badge/AI-Gemini%20API-success)
+![Generative AI](https://img.shields.io/badge/AI-Mistral%20API-success)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 </p>
@@ -83,7 +83,7 @@ Medical Student
 |-----------|--------------|
 | Backend | Python, Flask |
 | Frontend | HTML, CSS, JavaScript |
-| AI | Google Gemini API |
+| AI | MISTRAL API |
 | Version Control | Git & GitHub |
 | IDE | Visual Studio Code |
 
@@ -178,7 +178,7 @@ http://127.0.0.1:5000
 
 The simulator dashboard displaying patient information, consultation panel, investigation tools, and diagnosis evaluation.
 
-![](screenshots/dashboard.png)
+![](entire.png)
 
 ---
 
@@ -194,7 +194,7 @@ Students can communicate naturally with the AI-generated patient to collect medi
 
 Students can request physical examination findings before making a diagnosis.
 
-![](screenshots/patient_chat2.png)
+![](feedback.png)
 
 ---
 
@@ -202,7 +202,7 @@ Students can request physical examination findings before making a diagnosis.
 
 After submitting a diagnosis, the AI evaluates the student's clinical reasoning and provides a score with detailed feedback.
 
-![](screenshots/diagnosis.png)
+![](diagnosis.png)
 
 ---
 
@@ -217,7 +217,7 @@ Each case includes:
 - Chief Complaint
 - Clinical Investigation Tools
 
-![](screenshots/case_selection.png)
+![](case selecton.png)
 
 ---
 
@@ -319,7 +319,7 @@ This simulator helps students practice
 
 **Syed Abuthahir**
 
-Biomedical Engineering Student
+3RD Year Biomedical Engineering Student
 
 Dr. N.G.P Institute of Technology
 
