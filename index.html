@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Medical Training Simulator</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="header">
+
+        <div>
+
+            <h1>
+                🩺 Medical Training Simulator
+            </h1>
+
+            <p>
+                Interactive doctor-patient clinical training
+            </p>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <select id="difficultySelect">
+
+                <option value="All">
+                    All Levels
+                </option>
+
+                <option value="Beginner">
+                    Beginner
+                </option>
+
+                <option value="Intermediate">
+                    Intermediate
+                </option>
+
+                <option value="Advanced">
+                    Advanced
+                </option>
+
+            </select>
+
+
+            <button
+                id="newCaseBtn"
+                class="primary-btn"
+            >
+
+                🔄 New Case
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN LAYOUT
+    ========================================== -->
+
+    <div class="layout">
+
+
+        <!-- =====================================
+             LEFT PANEL - PATIENT INFORMATION
+        ====================================== -->
+
+        <aside class="patient-panel">
+
+
+            <div class="panel-title">
+
+                👤 Patient
+
+            </div>
+
+
+            <div class="patient-avatar">
+
+                👤
+
+            </div>
+
+
+            <div class="patient-info">
+
+
+                <div>
+
+                    <span>
+                        Age
+                    </span>
+
+                    <strong id="patientAge">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Gender
+                    </span>
+
+                    <strong id="patientGender">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Department
+                    </span>
+
+                    <strong id="patientCategory">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Difficulty
+                    </span>
+
+                    <strong id="patientDifficulty">
+                        --
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- CHIEF COMPLAINT -->
+
+            <div class="complaint-card">
+
+                <span>
+                    Chief Complaint
+                </span>
+
+                <strong id="chiefComplaint">
+
+                    Waiting for case...
+
+                </strong>
+
+            </div>
+
+
+
+            <!-- =================================
+                 CLINICAL TOOLS
+            ================================== -->
+
+            <div class="tools">
+
+                <h3>
+                    Clinical Tools
+                </h3>
+
+
+                <button
+                    class="tool-btn"
+                    onclick="getExamination()"
+                >
+
+                    🩺 Physical Examination
+
+                </button>
+
+
+                <button
+                    class="tool-btn"
+                    onclick="getTest('Blood Test')"
+                >
+
+                    🧪 Blood Test
+
+                </button>
+
+
+                <button
+                    class="tool-btn"
+                    onclick="getTest('X-Ray')"
+                >
+
+                    🩻 X-Ray
+
+                </button>
+
+
+                <button
+                    class="tool-btn"
+                    onclick="getTest('ECG')"
+                >
+
+                    💓 ECG
+
+                </button>
+
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =====================================
+             CENTER PANEL - LIVE CHAT
+        ====================================== -->
+
+        <main class="chat-panel">
+
+
+            <!-- CHAT HEADER -->
+
+            <div class="chat-header">
+
+                <div>
+
+                    <h2>
+                        Patient Consultation
+                    </h2>
+
+                    <p>
+                        Ask questions naturally and take the patient's history.
+                    </p>
+
+                </div>
+
+
+                <span class="online">
+
+                    ● Live
+
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================
+                 SCROLLABLE CHAT AREA
+            ================================== -->
+
+            <div
+                id="chatBox"
+                class="chat-box"
+            >
+
+                <!-- Messages appear here -->
+
+            </div>
+
+
+
+            <!-- =================================
+                 MESSAGE INPUT
+            ================================== -->
+
+            <div class="input-area">
+
+
+                <input
+                    id="userInput"
+                    type="text"
+                    placeholder="Ask the patient a question..."
+                    autocomplete="off"
+                >
+
+
+                <button
+                    id="sendBtn"
+                    class="send-btn"
+                >
+
+                    Send ➤
+
+                </button>
+
+
+            </div>
+
+
+        </main>
+
+
+
+        <!-- =====================================
+             RIGHT PANEL - DIAGNOSIS
+        ====================================== -->
+
+        <aside class="diagnosis-panel">
+
+
+            <h3>
+                Clinical Assessment
+            </h3>
+
+
+            <label>
+                Your Diagnosis
+            </label>
+
+
+            <textarea
+                id="diagnosisInput"
+                placeholder="Enter your diagnosis..."
+            ></textarea>
+
+
+            <button
+                id="evaluateBtn"
+                class="evaluate-btn"
+            >
+
+                📝 Submit Diagnosis
+
+            </button>
+
+
+
+            <!-- =================================
+                 EVALUATION
+            ================================== -->
+
+            <div
+                id="evaluationResult"
+                class="evaluation-result"
+            >
+
+                Your evaluation will appear here.
+
+            </div>
+
+
+
+            <!-- =================================
+                 CASE HISTORY
+            ================================== -->
+
+            <h3 class="history-title">
+
+                Case History
+
+            </h3>
+
+
+            <div
+                id="caseHistory"
+                class="case-history"
+            >
+
+                No completed cases yet.
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================== -->
+
+<script>
+
+
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
+
+let conversation = [];
+
+let currentCase = null;
+
+let history = [];
+
+
+
+/* =========================================
+   GET HTML ELEMENTS
+========================================= */
+
+const chatBox =
+    document.getElementById("chatBox");
+
+
+const userInput =
+    document.getElementById("userInput");
+
+
+const sendBtn =
+    document.getElementById("sendBtn");
+
+
+const newCaseBtn =
+    document.getElementById("newCaseBtn");
+
+
+const difficultySelect =
+    document.getElementById("difficultySelect");
+
+
+const evaluateBtn =
+    document.getElementById("evaluateBtn");
+
+
+
+/* =========================================
+   ADD MESSAGE TO CHAT
+========================================= */
+
+function addMessage(text, sender) {
+
+
+    const message =
+        document.createElement("div");
+
+
+    message.className =
+        "message " + sender;
+
+
+    const label =
+        document.createElement("small");
+
+
+    label.textContent =
+        sender === "doctor"
+            ? "You"
+            : "Patient";
+
+
+    const content =
+        document.createElement("p");
+
+
+    content.textContent =
+        text;
+
+
+    message.appendChild(label);
+
+
+    message.appendChild(content);
+
+
+    chatBox.appendChild(message);
+
+
+
+    /*
+       AUTOMATICALLY SCROLL TO
+       THE LATEST MESSAGE
+    */
+
+    requestAnimationFrame(() => {
+
+
+        chatBox.scrollTo({
+
+            top:
+                chatBox.scrollHeight,
+
+            behavior:
+                "smooth"
+
+        });
+
+
+    });
+
+
+}
+
+
+
+/* =========================================
+   SEND MESSAGE TO MISTRAL
+========================================= */
+
+async function sendMessage() {
+
+
+    const text =
+        userInput.value.trim();
+
+
+    if (!text) {
+
+        return;
+
+    }
+
+
+
+    /* ADD DOCTOR MESSAGE */
+
+    addMessage(
+
+        text,
+
+        "doctor"
+
+    );
+
+
+
+    /* SAVE MESSAGE */
+
+    conversation.push({
+
+        role:
+            "user",
+
+        content:
+            text
+
+    });
+
+
+
+    /* CLEAR INPUT */
+
+    userInput.value =
+        "";
+
+
+
+    /* DISABLE BUTTON */
+
+    sendBtn.disabled =
+        true;
+
+
+    sendBtn.textContent =
+        "Sending...";
+
+
+
+    try {
+
+
+        const response =
+            await fetch(
+
+                "/api/chat",
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers:
+                        {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                    body:
+                        JSON.stringify({
+
+                            messages:
+                                conversation,
+
+                            patient:
+                                currentCase
+
+                        })
+
+                }
+
+            );
+
+
+
+        const data =
+            await response.json();
+
+
+
+        /* HANDLE ERROR */
+
+        if (data.error) {
+
+
+            addMessage(
+
+                "System Error: " +
+                data.error,
+
+                "patient"
+
+            );
+
+
+            return;
+
+        }
+
+
+
+        /* ADD PATIENT RESPONSE */
+
+        addMessage(
+
+            data.message,
+
+            "patient"
+
+        );
+
+
+
+        /* SAVE PATIENT RESPONSE */
+
+        conversation.push({
+
+            role:
+                "assistant",
+
+            content:
+                data.message
+
+        });
+
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(
+
+            "Chat Error:",
+
+            error
+
+        );
+
+
+        addMessage(
+
+            "Unable to connect to the medical AI. Please check that the Flask server is running.",
+
+            "patient"
+
+        );
+
+
+    }
+
+
+    finally {
+
+
+        /* ENABLE BUTTON */
+
+        sendBtn.disabled =
+            false;
+
+
+        sendBtn.textContent =
+            "Send ➤";
+
+
+        /* RETURN TO INPUT */
+
+        userInput.focus();
+
+
+    }
+
+
+}
+
+
+
+/* =========================================
+   START NEW CASE
+========================================= */
+
+async function newCase() {
+
+
+    try {
+
+
+        /* RESET CONVERSATION */
+
+        conversation =
+            [];
+
+
+        /* CLEAR CHAT */
+
+        chatBox.innerHTML =
+            "";
+
+
+        /* CLEAR DIAGNOSIS */
+
+        document.getElementById(
+
+            "diagnosisInput"
+
+        ).value =
+            "";
+
+
+
+        /* RESET EVALUATION */
+
+        document.getElementById(
+
+            "evaluationResult"
+
+        ).textContent =
+
+            "Your evaluation will appear here.";
+
+
+
+        /* GET SELECTED DIFFICULTY */
+
+        const difficulty =
+
+            difficultySelect.value;
+
+
+
+        /* REQUEST NEW CASE */
+
+        const response =
+
+            await fetch(
+
+                "/api/new-case",
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers:
+                        {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                    body:
+                        JSON.stringify({
+
+                            difficulty:
+                                difficulty
+
+                        })
+
+                }
+
+            );
+
+
+
+        /* GET CASE DATA */
+
+        currentCase =
+
+            await response.json();
+
+
+
+        /* DISPLAY PATIENT INFORMATION */
+
+        document.getElementById(
+
+            "patientAge"
+
+        ).textContent =
+
+            currentCase.age;
+
+
+
+        document.getElementById(
+
+            "patientGender"
+
+        ).textContent =
+
+            currentCase.gender;
+
+
+
+        document.getElementById(
+
+            "patientCategory"
+
+        ).textContent =
+
+            currentCase.category;
+
+
+
+        document.getElementById(
+
+            "patientDifficulty"
+
+        ).textContent =
+
+            currentCase.difficulty;
+
+
+
+        document.getElementById(
+
+            "chiefComplaint"
+
+        ).textContent =
+
+            currentCase.chief_complaint;
+
+
+
+        /* PATIENT OPENS CONVERSATION */
+
+        addMessage(
+
+            "Hello doctor. I have been feeling unwell and I would like to tell you what is happening.",
+
+            "patient"
+
+        );
+
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(
+
+            "New Case Error:",
+
+            error
+
+        );
+
+
+        addMessage(
+
+            "Unable to start a new case. Please check that the Flask server is running.",
+
+            "patient"
+
+        );
+
+
+    }
+
+
+}
+
+
+
+/* =========================================
+   PHYSICAL EXAMINATION
+========================================= */
+
+async function getExamination() {
+
+
+    if (!currentCase) {
+
+
+        alert(
+
+            "Please start a new case first."
+
+        );
+
+
+        return;
+
+    }
+
+
+
+    try {
+
+
+        const response =
+
+            await fetch(
+
+                "/api/examination",
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers:
+                        {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                    body:
+                        JSON.stringify({
+
+                            case_id:
+                                currentCase.id
+
+                        })
+
+                }
+
+            );
+
+
+
+        const data =
+
+            await response.json();
+
+
+
+        if (data.error) {
+
+
+            addMessage(
+
+                "Error: " +
+                data.error,
+
+                "patient"
+
+            );
+
+
+            return;
+
+        }
+
+
+
+        let examinationText =
+
+            "Physical Examination:\n\n";
+
+
+
+        examinationText +=
+
+            "Vital Signs:\n";
+
+
+
+        examinationText +=
+
+            JSON.stringify(
+
+                data.vitals,
+
+                null,
+
+                2
+
+            );
+
+
+
+        examinationText +=
+
+            "\n\n";
+
+
+
+        examinationText +=
+
+            data.examination;
+
+
+
+        addMessage(
+
+            examinationText,
+
+            "patient"
+
+        );
+
+
+    }
+
+
+    catch (error) {
+
+
+        addMessage(
+
+            "Unable to retrieve physical examination results.",
+
+            "patient"
+
+        );
+
+
+    }
+
+
+}
+
+
+
+/* =========================================
+   MEDICAL TEST
+========================================= */
+
+async function getTest(testName) {
+
+
+    if (!currentCase) {
+
+
+        alert(
+
+            "Please start a new case first."
+
+        );
+
+
+        return;
+
+    }
+
+
+
+    try {
+
+
+        const response =
+
+            await fetch(
+
+                "/api/test",
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers:
+                        {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                    body:
+                        JSON.stringify({
+
+                            case_id:
+                                currentCase.id,
+
+                            test:
+                                testName
+
+                        })
+
+                }
+
+            );
+
+
+
+        const data =
+
+            await response.json();
+
+
+
+        if (data.error) {
+
+
+            addMessage(
+
+                "Error: " +
+                data.error,
+
+                "patient"
+
+            );
+
+
+            return;
+
+        }
+
+
+
+        addMessage(
+
+            testName +
+
+            " Result:\n\n" +
+
+            data.result,
+
+            "patient"
+
+        );
+
+
+    }
+
+
+    catch (error) {
+
+
+        addMessage(
+
+            "Unable to retrieve the test result.",
+
+            "patient"
+
+        );
+
+
+    }
+
+
+}
+
+
+
+/* =========================================
+   EVALUATE DIAGNOSIS
+========================================= */
+
+async function evaluateDiagnosis() {
+
+
+    if (!currentCase) {
+
+
+        alert(
+
+            "Please start a new case first."
+
+        );
+
+
+        return;
+
+    }
+
+
+
+    /* GET DIAGNOSIS */
+
+    const diagnosis =
+
+        document.getElementById(
+
+            "diagnosisInput"
+
+        ).value.trim();
+
+
+
+    /* CHECK EMPTY */
+
+    if (!diagnosis) {
+
+
+        alert(
+
+            "Please enter your diagnosis first."
+
+        );
+
+
+        return;
+
+    }
+
+
+
+    /* DISABLE BUTTON */
+
+    evaluateBtn.disabled =
+        true;
+
+
+    evaluateBtn.textContent =
+        "Evaluating...";
+
+
+
+    try {
+
+
+        const response =
+
+            await fetch(
+
+                "/api/evaluate",
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers:
+                        {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                    body:
+                        JSON.stringify({
+
+                            case_id:
+                                currentCase.id,
+
+                            diagnosis:
+                                diagnosis
+
+                        })
+
+                }
+
+            );
+
+
+
+        const data =
+
+            await response.json();
+
+
+
+        if (data.error) {
+
+
+            document.getElementById(
+
+                "evaluationResult"
+
+            ).textContent =
+
+                "Error: " +
+                data.error;
+
+
+            return;
+
+        }
+
+
+
+        /* DISPLAY FEEDBACK */
+
+        document.getElementById(
+
+            "evaluationResult"
+
+        ).textContent =
+
+            data.feedback;
+
+
+
+        /* SAVE CASE HISTORY */
+
+        history.push({
+
+            title:
+                currentCase.title,
+
+            diagnosis:
+                diagnosis,
+
+            result:
+                data.feedback
+
+        });
+
+
+
+        /* UPDATE HISTORY */
+
+        updateHistory();
+
+
+    }
+
+
+    catch (error) {
+
+
+        document.getElementById(
+
+            "evaluationResult"
+
+        ).textContent =
+
+            "Unable to evaluate the diagnosis.";
+
+
+    }
+
+
+    finally {
+
+
+        evaluateBtn.disabled =
+            false;
+
+
+        evaluateBtn.textContent =
+
+            "📝 Submit Diagnosis";
+
+
+    }
+
+
+}
+
+
+
+/* =========================================
+   UPDATE CASE HISTORY
+========================================= */
+
+function updateHistory() {
+
+
+    const historyBox =
+
+        document.getElementById(
+
+            "caseHistory"
+
+        );
+
+
+
+    /* CLEAR OLD HISTORY */
+
+    historyBox.innerHTML =
+        "";
+
+
+
+    /* NO HISTORY */
+
+    if (history.length === 0) {
+
+
+        historyBox.textContent =
+
+            "No completed cases yet.";
+
+
+        return;
+
+    }
+
+
+
+    /* DISPLAY HISTORY */
+
+    history.forEach(
+
+        (item, index) => {
+
+
+            const div =
+
+                document.createElement(
+
+                    "div"
+
+                );
+
+
+
+            div.className =
+
+                "history-item";
+
+
+
+            const title =
+
+                document.createElement(
+
+                    "strong"
+
+                );
+
+
+            title.textContent =
+
+                "Case " +
+
+                (index + 1) +
+
+                ": " +
+
+                item.title;
+
+
+
+            const diagnosis =
+
+                document.createElement(
+
+                    "p"
+
+                );
+
+
+            diagnosis.textContent =
+
+                "Diagnosis: " +
+
+                item.diagnosis;
+
+
+
+            div.appendChild(
+
+                title
+
+            );
+
+
+            div.appendChild(
+
+                diagnosis
+
+            );
+
+
+            historyBox.appendChild(
+
+                div
+
+            );
+
+
+        }
+
+    );
+
+
+}
+
+
+
+/* =========================================
+   SEND MESSAGE WITH ENTER KEY
+========================================= */
+
+userInput.addEventListener(
+
+    "keydown",
+
+    function(event) {
+
+
+        if (
+
+            event.key ===
+
+            "Enter"
+
+        ) {
+
+
+            event.preventDefault();
+
+
+            sendMessage();
+
+
+        }
+
+
+    }
+
+);
+
+
+
+/* =========================================
+   BUTTON EVENTS
+========================================= */
+
+sendBtn.addEventListener(
+
+    "click",
+
+    sendMessage
+
+);
+
+
+newCaseBtn.addEventListener(
+
+    "click",
+
+    newCase
+
+);
+
+
+evaluateBtn.addEventListener(
+
+    "click",
+
+    evaluateDiagnosis
+
+);
+
+
+
+/* =========================================
+   START FIRST CASE AUTOMATICALLY
+========================================= */
+
+window.addEventListener(
+
+    "load",
+
+    newCase
+
+);
+
+
+</script>
+
+
+</body>
+
+</html>

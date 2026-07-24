@@ -1,0 +1,1004 @@
+:root {
+
+--bg: #f3f7f8;
+
+--white: #ffffff;
+
+--blue: #477d99;
+
+--blue-light: #eaf4f8;
+
+--green: #e9f5ee;
+
+--green-dark: #4d8063;
+
+--lavender: #f0edf8;
+
+--text: #2c3e46;
+
+--muted: #73828a;
+
+--border: #dce5e9;
+
+--shadow:
+0 8px 25px rgba(60,90,105,0.08);
+
+}
+
+
+* {
+
+box-sizing:
+border-box;
+
+margin:
+0;
+
+padding:
+0;
+
+}
+
+
+body {
+
+font-family:
+"Source Sans 3",
+sans-serif;
+
+background:
+var(--bg);
+
+color:
+var(--text);
+
+height:
+100vh;
+
+overflow:
+hidden;
+
+}
+
+
+.app {
+
+height:
+100vh;
+
+display:
+flex;
+
+flex-direction:
+column;
+
+padding:
+20px;
+
+}
+
+
+.header {
+
+background:
+var(--white);
+
+border:
+1px solid var(--border);
+
+border-radius:
+16px;
+
+padding:
+16px 22px;
+
+display:
+flex;
+
+justify-content:
+space-between;
+
+align-items:
+center;
+
+margin-bottom:
+16px;
+
+box-shadow:
+var(--shadow);
+
+}
+
+
+.header h1 {
+
+font-family:
+"Libre Baskerville",
+serif;
+
+font-size:
+1.45rem;
+
+color:
+#345c73;
+
+}
+
+
+.header p {
+
+color:
+var(--muted);
+
+font-size:
+0.85rem;
+
+margin-top:
+4px;
+
+}
+
+
+.header-actions {
+
+display:
+flex;
+
+gap:
+10px;
+
+}
+
+
+select {
+
+border:
+1px solid var(--border);
+
+border-radius:
+9px;
+
+padding:
+9px 12px;
+
+background:
+white;
+
+color:
+var(--text);
+
+}
+
+
+.primary-btn {
+
+background:
+var(--blue);
+
+color:
+white;
+
+border:
+none;
+
+border-radius:
+9px;
+
+padding:
+10px 17px;
+
+font-weight:
+600;
+
+cursor:
+pointer;
+
+}
+
+
+.layout {
+
+flex:
+1;
+
+min-height:
+0;
+
+display:
+grid;
+
+grid-template-columns:
+250px
+1fr
+270px;
+
+gap:
+16px;
+
+}
+
+
+.patient-panel,
+.diagnosis-panel,
+.chat-panel {
+
+background:
+var(--white);
+
+border:
+1px solid var(--border);
+
+border-radius:
+16px;
+
+box-shadow:
+var(--shadow);
+
+min-height:
+0;
+
+}
+
+
+.patient-panel {
+
+padding:
+18px;
+
+overflow-y:
+auto;
+
+}
+
+
+.panel-title {
+
+font-family:
+"Libre Baskerville",
+serif;
+
+font-size:
+1rem;
+
+color:
+#345c73;
+
+margin-bottom:
+16px;
+
+}
+
+
+.patient-avatar {
+
+height:
+70px;
+
+width:
+70px;
+
+border-radius:
+50%;
+
+background:
+var(--blue-light);
+
+display:
+flex;
+
+align-items:
+center;
+
+justify-content:
+center;
+
+font-size:
+30px;
+
+margin:
+auto;
+
+}
+
+
+.patient-info {
+
+margin-top:
+20px;
+
+display:
+grid;
+
+gap:
+10px;
+
+}
+
+
+.patient-info div {
+
+display:
+flex;
+
+justify-content:
+space-between;
+
+padding:
+8px;
+
+background:
+#f8fafb;
+
+border-radius:
+7px;
+
+}
+
+
+.patient-info span {
+
+color:
+var(--muted);
+
+}
+
+
+.patient-info strong {
+
+color:
+var(--text);
+
+}
+
+
+.complaint-card {
+
+margin-top:
+16px;
+
+padding:
+13px;
+
+background:
+var(--lavender);
+
+border-radius:
+10px;
+
+}
+
+
+.complaint-card span {
+
+display:
+block;
+
+font-size:
+0.75rem;
+
+color:
+var(--muted);
+
+}
+
+
+.complaint-card strong {
+
+display:
+block;
+
+margin-top:
+5px;
+
+}
+
+
+.tools {
+
+margin-top:
+20px;
+
+}
+
+
+.tools h3 {
+
+font-family:
+"Libre Baskerville",
+serif;
+
+font-size:
+0.9rem;
+
+margin-bottom:
+10px;
+
+}
+
+
+.tool-btn {
+
+width:
+100%;
+
+padding:
+10px;
+
+margin-bottom:
+7px;
+
+border:
+1px solid var(--border);
+
+background:
+var(--blue-light);
+
+color:
+#3e6d85;
+
+border-radius:
+8px;
+
+cursor:
+pointer;
+
+text-align:
+left;
+
+}
+
+
+.tool-btn:hover {
+
+background:
+#dceef5;
+
+}
+
+
+
+/* CHAT */
+
+.chat-panel {
+
+display:
+flex;
+
+flex-direction:
+column;
+
+overflow:
+hidden;
+
+}
+
+
+.chat-header {
+
+padding:
+15px 20px;
+
+border-bottom:
+1px solid var(--border);
+
+display:
+flex;
+
+justify-content:
+space-between;
+
+align-items:
+center;
+
+}
+
+
+.chat-header h2 {
+
+font-family:
+"Libre Baskerville",
+serif;
+
+font-size:
+1rem;
+
+color:
+#345c73;
+
+}
+
+
+.chat-header p {
+
+font-size:
+0.78rem;
+
+color:
+var(--muted);
+
+margin-top:
+3px;
+
+}
+
+
+.online {
+
+color:
+var(--green-dark);
+
+font-size:
+0.8rem;
+
+font-weight:
+600;
+
+}
+
+
+/* CONTINUOUS SCROLLING CHAT */
+
+.chat-box {
+
+flex:
+1;
+
+min-height:
+0;
+
+overflow-y:
+auto;
+
+padding:
+20px;
+
+display:
+flex;
+
+flex-direction:
+column;
+
+gap:
+15px;
+
+background:
+#fbfcfd;
+
+scroll-behavior:
+smooth;
+
+}
+
+
+.chat-box::-webkit-scrollbar {
+
+width:
+8px;
+
+}
+
+
+.chat-box::-webkit-scrollbar-thumb {
+
+background:
+#c5d4db;
+
+border-radius:
+10px;
+
+}
+
+
+.message {
+
+max-width:
+75%;
+
+padding:
+11px 14px;
+
+border-radius:
+14px;
+
+line-height:
+1.5;
+
+}
+
+
+.message small {
+
+display:
+block;
+
+font-weight:
+700;
+
+font-size:
+0.7rem;
+
+margin-bottom:
+4px;
+
+opacity:
+0.65;
+
+}
+
+
+.message p {
+
+white-space:
+pre-wrap;
+
+}
+
+
+.patient {
+
+align-self:
+flex-start;
+
+background:
+var(--blue-light);
+
+border:
+1px solid #d9eaf1;
+
+border-bottom-left-radius:
+4px;
+
+}
+
+
+.doctor {
+
+align-self:
+flex-end;
+
+background:
+var(--green);
+
+border:
+1px solid #d9eadf;
+
+border-bottom-right-radius:
+4px;
+
+}
+
+
+/* INPUT */
+
+.input-area {
+
+display:
+flex;
+
+gap:
+10px;
+
+padding:
+13px;
+
+border-top:
+1px solid var(--border);
+
+}
+
+
+.input-area input {
+
+flex:
+1;
+
+padding:
+12px;
+
+border:
+1px solid var(--border);
+
+border-radius:
+9px;
+
+outline:
+none;
+
+font-family:
+"Source Sans 3",
+sans-serif;
+
+}
+
+
+.input-area input:focus {
+
+border-color:
+#8fb7ca;
+
+}
+
+
+.send-btn {
+
+background:
+var(--blue);
+
+color:
+white;
+
+border:
+none;
+
+padding:
+0 20px;
+
+border-radius:
+9px;
+
+cursor:
+pointer;
+
+font-weight:
+600;
+
+}
+
+
+
+/* RIGHT PANEL */
+
+.diagnosis-panel {
+
+padding:
+18px;
+
+overflow-y:
+auto;
+
+}
+
+
+.diagnosis-panel h3 {
+
+font-family:
+"Libre Baskerville",
+serif;
+
+font-size:
+0.95rem;
+
+color:
+#345c73;
+
+margin-bottom:
+14px;
+
+}
+
+
+.diagnosis-panel label {
+
+font-size:
+0.8rem;
+
+color:
+var(--muted);
+
+}
+
+
+textarea {
+
+width:
+100%;
+
+height:
+100px;
+
+margin-top:
+7px;
+
+padding:
+10px;
+
+border:
+1px solid var(--border);
+
+border-radius:
+9px;
+
+resize:
+vertical;
+
+font-family:
+"Source Sans 3",
+sans-serif;
+
+}
+
+
+.evaluate-btn {
+
+width:
+100%;
+
+margin-top:
+10px;
+
+padding:
+11px;
+
+background:
+var(--green-dark);
+
+color:
+white;
+
+border:
+none;
+
+border-radius:
+9px;
+
+font-weight:
+600;
+
+cursor:
+pointer;
+
+}
+
+
+.evaluation-result {
+
+margin-top:
+15px;
+
+padding:
+12px;
+
+background:
+var(--lavender);
+
+border-radius:
+9px;
+
+font-size:
+0.82rem;
+
+line-height:
+1.5;
+
+white-space:
+pre-wrap;
+
+}
+
+
+.history-title {
+
+margin-top:
+25px;
+
+}
+
+
+.case-history {
+
+font-size:
+0.8rem;
+
+color:
+var(--muted);
+
+}
+
+
+.history-item {
+
+padding:
+10px;
+
+margin-bottom:
+7px;
+
+background:
+#f7fafb;
+
+border:
+1px solid var(--border);
+
+border-radius:
+8px;
+
+}
+
+
+/* RESPONSIVE */
+
+@media
+(max-width: 1100px) {
+
+
+.layout {
+
+grid-template-columns:
+220px
+1fr;
+
+}
+
+
+.diagnosis-panel {
+
+display:
+none;
+
+}
+
+}
+
+
+@media
+(max-width: 750px) {
+
+
+body {
+
+overflow:
+auto;
+
+}
+
+
+.app {
+
+height:
+auto;
+
+}
+
+
+.header {
+
+flex-direction:
+column;
+
+align-items:
+flex-start;
+
+gap:
+12px;
+
+}
+
+
+.layout {
+
+display:
+flex;
+
+flex-direction:
+column;
+
+}
+
+
+.patient-panel {
+
+max-height:
+none;
+
+}
+
+
+.chat-panel {
+
+height:
+650px;
+
+}
+
+
+}
