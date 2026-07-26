@@ -12,7 +12,7 @@ app = Flask(__name__)
 MISTRAL_API_KEY = "Ob5o2WIOeco7FVYGZof7n6UihfM803VG"
 
 client = OpenAI(
-    api_key=MISTRAL_API_KEY,
+    api_key="Ob5o2WIOeco7FVYGZof7n6UihfM803VG",
     base_url="https://api.mistral.ai/v1"
 )
 
